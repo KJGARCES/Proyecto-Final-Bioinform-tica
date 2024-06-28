@@ -1,1 +1,10 @@
-Hola Mundo
+mkdir datos alineamiento resultados 
+
+./scripts/descargar_secuencias.sh
+mv *.fasta datos/
+
+muscle -in datos/secuencias.fasta -out alineamiento/secuencias_alineadas.phy
+
+iqtree -s alineamiento/secuencias_alineadas_editadas.phy -m MF -bb 1000 -nt AUTO -pre resultados/arbol
+
+cp resultados/arbol.treefile resultados/arbol.tree
